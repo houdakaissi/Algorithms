@@ -1,1 +1,42 @@
 
+import java.util.Arrays;
+public class Main
+{
+	public static void main(String[] args) {
+  int t[]={1,4,7,5,6};
+  int x=6;
+ Arrays.sort(t);
+  System.out.println(jumpSearch(t,x));
+	}
+
+	  public static int jumpSearch(int[] arr, int target) {
+	       int l=arr.length;
+ int step = (int) Math.sqrt(l); 
+	int prev=0;
+	while(prev<l && arr[prev]<target){
+	    prev=step+prev;
+	      if (prev >= l) {
+                prev = l - 1;
+                break;
+            }
+	    
+	}
+	
+	for (int i = prev; i >= Math.max(prev - step + 1, 0); i--) {
+            if (arr[i] == target) {
+                return i; // Cible trouvée
+            }
+        }
+        return -1;
+	  }
+	
+
+	
+	
+
+	
+	
+	
+	
+	
+}
