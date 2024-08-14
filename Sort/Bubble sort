@@ -1,0 +1,22 @@
+public class Main {
+    public static void main(String[] args) {
+        int T[] = {1, 5, 7, 0, 9, 8, 2};
+        int n = T.length;
+
+        for (int i = 0; i < n-1 ; i++) {
+            for (int j = 0; j < n-1; j++) {
+                if (T[j] > T[j + 1]) {
+                    // Swap T[j] and T[j + 1]
+                    int temp = T[j];
+                    T[j] = T[j + 1];
+                    T[j + 1] = temp;
+                }
+            }
+        }
+
+        // Print the sorted array
+        for (int num : T) {
+            System.out.print(num + " ");
+        }
+    }
+}
