@@ -1,1 +1,48 @@
 
+public class TernarySearch {
+
+    // Function to perform ternary search
+    public static int ternarySearch(int[] arr, int left, int right, int target) {
+        if (left <= right) {
+            // Divide the array into three parts
+            int mid1 = left + (right - left) / 3;
+            int mid2 = right - (right - left) / 3;
+            
+            // Check if target is at one of the mid points
+            if (arr[mid1] == target) {
+                return mid1;
+            }
+            if (arr[mid2] == target) {
+                return mid2;
+            }
+            
+            // If target is smaller, search in the left third
+            if (target < arr[mid1]) {
+                return ternarySearch(arr, left, mid1 - 1, target);
+            }
+            // If target is larger, search in the right third
+            else if (target > arr[mid2]) {
+                return ternarySearch(arr, mid2 + 1, right, target);
+            }
+            // Search in the middle third
+            else {
+                return ternarySearch(arr, mid1 + 1, mid2 - 1, target);
+            }
+        }
+        
+        // Target is not present in the array
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 4, 7, 10, 13, 16, 19, 22, 25, 28}; // Sorted array
+        int target = 19; // Target value to search for
+
+        int result = ternarySearch(arr, 0, arr.length - 1, target);
+        if (result != -1) {
+            System.out.println("Element found at index: " + result);
+        } else {
+            System.out.println("Element not found in the array.");
+        }
+    }
+}
